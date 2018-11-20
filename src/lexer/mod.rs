@@ -105,3 +105,6 @@ impl<'a> Lexer<'a> {
         } // loop
     } // next_token
 }
+
+#[cfg(test)]
+mod test;
