@@ -1,0 +1,7 @@
+# from Cargo
+Cargo.lock
+target
+
+# Emacs files
+*~
+\#*\#
