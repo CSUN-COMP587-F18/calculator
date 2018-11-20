@@ -159,7 +159,6 @@ impl<'a> Parser<'a> {
             },
             Token::Integer(ref i) => Result::Ok((Expression::Integer(*i), pos1 + 1)),
             Token::Minus => {
-                println!("IN MINUS");
                 let (primary, pos2) = try!(self.parse_primary(pos1 + 1));
                 Result::Ok(
                     (Expression::UnaryMinus(
