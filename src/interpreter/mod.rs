@@ -65,3 +65,6 @@ impl Interpreter for Expression {
         }
     }
 }
+
+#[cfg(test)]
+mod test;
