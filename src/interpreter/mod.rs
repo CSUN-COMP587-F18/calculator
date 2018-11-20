@@ -79,4 +79,5 @@ impl Interpreter for Expression {
 
 #[cfg(test)]
 mod test;
+#[cfg(test)]
 mod fuzzer;

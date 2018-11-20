@@ -173,4 +173,5 @@ impl<'a> Parser<'a> {
 
 #[cfg(test)]
 mod test;
+#[cfg(test)]
 mod fuzzer;

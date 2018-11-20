@@ -108,4 +108,5 @@ impl<'a> Lexer<'a> {
 
 #[cfg(test)]
 mod test;
+#[cfg(test)]
 mod fuzzer;
