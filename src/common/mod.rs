@@ -29,3 +29,4 @@ impl<'a, A> Iterator for PushbackIterator<'a, A> {
 
 #[cfg(test)]
 mod test;
+pub mod fuzzer;
