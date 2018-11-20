@@ -22,17 +22,28 @@ pub trait OperationEvaluator {
     fn operation(&self, v1: i32, v2: i32) -> InternalInterpreterResult;
 }
 
+fn to_result(op: Option<i32>, if_error: String) -> InternalInterpreterResult {
+    match op {
+        Option::Some(i) => Result::Ok(i),
+        Option::None => Result::Err(if_error)
+    }
+}
+
 impl OperationEvaluator for Operation {
     fn operation(&self, v1: i32, v2: i32) -> InternalInterpreterResult {
         match self {
-            Operation::Plus => Result::Ok(v1 + v2),
-            Operation::Minus => Result::Ok(v1 - v2),
-            Operation::Times => Result::Ok(v1 * v2),
+            Operation::Plus => to_result(v1.checked_add(v2),
+                                         format!("addition overflow")),
+            Operation::Minus => to_result(v1.checked_sub(v2),
+                                          format!("subtraction overflow")),
+            Operation::Times => to_result(v1.checked_mul(v2),
+                                          format!("multiplication overflow")),
             Operation::Div => {
                 if v2 == 0 {
                     Result::Err(format!("Division by zero"))
                 } else {
-                    Result::Ok(v1 / v2)
+                    to_result(v1.checked_div(v2),
+                              format!("Division overflow / underflow"))
                 }
             }
         }
